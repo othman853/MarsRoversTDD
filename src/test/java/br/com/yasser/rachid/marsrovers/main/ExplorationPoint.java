@@ -22,16 +22,28 @@ public class ExplorationPoint {
 		this.coordinateY = coordinateY;
 	}
 	
+	public ExplorationPoint(){
+		
+	}
+	
 	public int getCoordinateX() {
 		return coordinateX;
 	}
 	public void setCoordinateX(int coordinateX) {
+		if(coordinateX < 0 ){
+			throw new IllegalArgumentException("X coordinate can't be less than 0");
+		}
+		
 		this.coordinateX = coordinateX;
 	}
 	public int getCoordinateY() {
 		return coordinateY;
 	}
 	public void setCoordinateY(int coordinateY) {
+		if(coordinateY < 0){
+			throw new IllegalArgumentException("Y coordinate can't be less than 0");
+		}
+		
 		this.coordinateY = coordinateY;
 	}
 }
