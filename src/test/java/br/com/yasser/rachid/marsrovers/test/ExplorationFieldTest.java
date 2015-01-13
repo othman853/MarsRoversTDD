@@ -46,7 +46,7 @@ public class ExplorationFieldTest {
 		int fieldWidth = 4;
 		int fieldHeight = 4;
 		
-		explorationField = new ExplorationField(width,height);
+		explorationField = new ExplorationField(fieldWidth,fieldHeight);
 		explorationField.addRobot(robot, point);
 	}
 	
