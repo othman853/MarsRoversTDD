@@ -1,4 +1,4 @@
-package br.com.yasser.rachid.marsrovers.test;
+package main;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
@@ -36,9 +36,8 @@ public class ExplorationFieldTest {
 		assertEquals(status, ExplorationPoint.POINT_FILLED);		
 	}
 	
-	@Test(expected=IllegalArgumentException.class)
-	@Ignore
-	public void addRobot_Receives5by5AsParam_ShouldThrowIllegalArgumentException(){
+	@Test(expected=IllegalArgumentException.class)	
+	public void addRobot_Receives5by5AsParam_ShouldThrowIllegalArgumentException_BecauseThePointIsOutOfFieldsBounds(){
 		Robot robot = robotBuilder.getSingle();
 		ExplorationPoint point = pointBuilder.getSingle();
 		point.setCoordinateX(5);
@@ -49,7 +48,4 @@ public class ExplorationFieldTest {
 		explorationField = new ExplorationField(fieldWidth,fieldHeight);
 		explorationField.addRobot(robot, point);
 	}
-	
-	
-
 }
