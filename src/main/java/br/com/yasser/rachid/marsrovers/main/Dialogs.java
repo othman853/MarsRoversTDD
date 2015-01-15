@@ -13,10 +13,6 @@ public class Dialogs {
 		this.reader = reader;		
 	}
 	
-	public Dialogs(){
-		
-	}
-	
 	public void setReader(Scanner reader){
 		this.reader = reader;
 	}
