@@ -14,17 +14,12 @@ import br.com.yasser.rachid.marsrovers.main.ExplorationPoint;
 
 public class DialogsTest {
 	
-	private Dialogs dialogs;	 
-	
-	@Before
-	public void setUp(){		
-		dialogs = new Dialogs();
-	}
+	private Dialogs dialogs;	
 	
 	@Test
 	public void askForPosition_Valid5by5CoordinatesAsParam_ShouldReturnA5by5EXplorationPoint(){		
 		String expectedInput = "5,5";		
-		dialogs.setReader(createScanner(expectedInput));
+		dialogs = new Dialogs(createScanner(expectedInput));
 		ExplorationPoint expectedPoint = new ExplorationPoint(5,5);
 				
 		ExplorationPoint point = dialogs.askForPosition();		
@@ -35,8 +30,7 @@ public class DialogsTest {
 	@Test(expected=InputMismatchException.class)
 	public void askForPosition_InvalidCoordinatesAsParam_ShouldThrowInputMismatchException(){
 		String incorrectInput = "a,a";
-		Scanner reader = createScanner(incorrectInput);
-		dialogs.setReader(reader);
+		dialogs = new Dialogs(createScanner(incorrectInput));
 		
 		dialogs.askForPosition();
 	}
@@ -44,8 +38,7 @@ public class DialogsTest {
 	@Test
 	public void askForMoveCommand_ValidCommandAsParam_ShouldReturnAValidCommandObject(){
 		String expectedInput = "LMRMLM";
-		Scanner reader = createScanner(expectedInput);
-		dialogs.setReader(reader);
+		dialogs = new Dialogs(createScanner(expectedInput));
 		Command expected = new Command(expectedInput);
 		
 		Command generated = dialogs.askForCommand();
@@ -56,8 +49,7 @@ public class DialogsTest {
 	@Test(expected=InputMismatchException.class)
 	public void askForMoveCommand_InvalidCommandAsParam_ShouldThrowInputMismatchException(){
 		String incorrectInput = "LMA";
-		Scanner reader = createScanner(incorrectInput);
-		dialogs.setReader(reader);
+		dialogs = new Dialogs(createScanner(incorrectInput));
 		
 		dialogs.askForCommand();
 	}
