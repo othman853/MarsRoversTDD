@@ -1,5 +1,5 @@
 package main;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -47,5 +47,17 @@ public class ExplorationFieldTest {
 		
 		explorationField = new ExplorationField(fieldWidth,fieldHeight);
 		explorationField.addRobot(robot, point);
+	}
+	
+	@Test
+	public void isInsideFieldsBounds_5by5AsPartam_ShouldReturnFalse_OnA4by4Field(){
+		explorationField = new ExplorationField(4,4);
+		ExplorationPoint point = pointBuilder.getSingle();
+		point.setCoordinateX(5);
+		point.setCoordinateY(5);
+		
+		boolean isInsideBounds = explorationField.isInsideFieldBounds(point);
+		
+		assertFalse(isInsideBounds);
 	}
 }
