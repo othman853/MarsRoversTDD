@@ -1,6 +1,5 @@
 package br.com.yasser.rachid.marsrovers.main;
 
-import java.io.InputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,7 +7,7 @@ public class Dialogs {
 	
 	private Scanner reader;
 	public static final String POSITION_INPUT_PATTERN = "([0-9])+(,)+([0-9])+";
-	public static final String COMMAND_INPUT_PATTERN  = "[LMR]";
+	public static final String COMMAND_INPUT_PATTERN  = "[LMR]+";
 	
 	public Dialogs(Scanner reader){		
 		this.reader = reader;		
