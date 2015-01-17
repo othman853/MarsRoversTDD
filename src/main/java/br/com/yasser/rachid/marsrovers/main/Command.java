@@ -28,6 +28,6 @@ public class Command {
 	public boolean equals(Object obj) {
 		Command other = (Command) obj;
 		
-		return this.command.equals(other.get());
+		return this.command.toString().equals(other.get());
 	}
 }
