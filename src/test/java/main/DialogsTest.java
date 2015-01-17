@@ -1,5 +1,6 @@
 package main;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayInputStream;
@@ -8,34 +9,33 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-import br.com.yasser.rachid.marsrovers.main.Command;
-import br.com.yasser.rachid.marsrovers.main.Dialogs;
-import br.com.yasser.rachid.marsrovers.main.ExplorationPoint;
+import br.com.yasser.rachid.marsrovers.model.Command;
+import br.com.yasser.rachid.marsrovers.view.Dialogs;
 
 public class DialogsTest {
 	
 	private Dialogs dialogs;	
 	
 	@Test
-	public void askForPosition_Valid5by5CoordinatesAsParam_ShouldReturnA5by5EXplorationPoint(){		
+	public void askForFieldSize_Valid5by5CoordinatesAsParam_ShouldReturnAValidIntegerArray(){		
 		String expectedInput = "5,5";		
 		dialogs = new Dialogs(createScanner(expectedInput));
-		ExplorationPoint expectedPoint = new ExplorationPoint(5,5);
-				
-		ExplorationPoint point = dialogs.askForPosition();		
+		int [] expectedFieldDimension = {5,5};
 		
-		assertEquals(point, expectedPoint);
+		int [] generatedFieldDimension = dialogs.askForFieldSize();		
+		
+		assertArrayEquals(generatedFieldDimension, expectedFieldDimension);		
 	}
 	
-	@Test(expected=InputMismatchException.class)
-	public void askForPosition_InvalidCoordinatesAsParam_ShouldThrowInputMismatchException(){
+	@Test(expected=InputMismatchException.class)	
+	public void askForFieldSize_InvalidDimensionAsParam_ShouldThrowInputMismatchException(){
 		String incorrectInput = "a,a";
 		dialogs = new Dialogs(createScanner(incorrectInput));
 		
-		dialogs.askForPosition();
+		dialogs.askForFieldSize();
 	}
 	
-	@Test
+	@Test	
 	public void askForMoveCommand_ValidCommandAsParam_ShouldReturnAValidCommandObject(){
 		String expectedInput = "LMRMLM";
 		dialogs = new Dialogs(createScanner(expectedInput));
