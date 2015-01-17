@@ -3,7 +3,7 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.yasser.rachid.marsrovers.main.ExplorationPoint;
+import br.com.yasser.rachid.marsrovers.model.ExplorationPoint;
 
 public class ExplorationPointBuilder implements Builder<ExplorationPoint>{
 

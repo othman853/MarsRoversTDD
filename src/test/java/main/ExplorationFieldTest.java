@@ -5,9 +5,9 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import br.com.yasser.rachid.marsrovers.main.ExplorationField;
-import br.com.yasser.rachid.marsrovers.main.ExplorationPoint;
-import br.com.yasser.rachid.marsrovers.main.Robot;
+import br.com.yasser.rachid.marsrovers.model.ExplorationField;
+import br.com.yasser.rachid.marsrovers.model.ExplorationPoint;
+import br.com.yasser.rachid.marsrovers.model.Robot;
 
 
 public class ExplorationFieldTest {

@@ -1,4 +1,5 @@
-package br.com.yasser.rachid.marsrovers.main;
+package br.com.yasser.rachid.marsrovers.model;
+
 
 public class ExplorationField {
 	

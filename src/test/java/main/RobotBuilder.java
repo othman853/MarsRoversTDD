@@ -4,7 +4,7 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.yasser.rachid.marsrovers.main.Robot;
+import br.com.yasser.rachid.marsrovers.model.Robot;
 
 public class RobotBuilder implements Builder<Robot>{
 
