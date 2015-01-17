@@ -6,9 +6,9 @@ import java.io.ByteArrayInputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import org.junit.Before;
 import org.junit.Test;
 
+import br.com.yasser.rachid.marsrovers.main.Command;
 import br.com.yasser.rachid.marsrovers.main.Dialogs;
 import br.com.yasser.rachid.marsrovers.main.ExplorationPoint;
 
@@ -41,7 +41,7 @@ public class DialogsTest {
 		dialogs = new Dialogs(createScanner(expectedInput));
 		Command expected = new Command(expectedInput);
 		
-		Command generated = dialogs.askForCommand();
+		Command generated = dialogs.askForCommand();		
 		
 		assertEquals(generated, expected);
 	}
