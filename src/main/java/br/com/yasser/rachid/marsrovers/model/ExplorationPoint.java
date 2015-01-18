@@ -29,6 +29,7 @@ public class ExplorationPoint {
 	public int getCoordinateX() {
 		return coordinateX;
 	}
+	
 	public void setCoordinateX(int coordinateX) {
 		if(coordinateX < 0 ){
 			throw new IllegalArgumentException("X coordinate can't be less than 0");
@@ -36,15 +37,33 @@ public class ExplorationPoint {
 		
 		this.coordinateX = coordinateX;
 	}
+	
 	public int getCoordinateY() {
 		return coordinateY;
 	}
+	
 	public void setCoordinateY(int coordinateY) {
 		if(coordinateY < 0){
 			throw new IllegalArgumentException("Y coordinate can't be less than 0");
 		}
 		
 		this.coordinateY = coordinateY;
+	}
+	
+	public void increaseX(){
+		coordinateX++;
+	}
+	
+	public void decreaseX(){
+		coordinateX = (coordinateX>0)? coordinateX++:coordinateX;
+	}
+	
+	public void increaseY(){
+		coordinateY++;
+	}
+	
+	public void decreaseY(){
+		coordinateY = (coordinateY>0)? coordinateY++:coordinateY;
 	}
 	
 	@Override
