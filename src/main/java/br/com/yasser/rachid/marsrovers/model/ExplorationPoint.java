@@ -77,17 +77,17 @@ public class ExplorationPoint {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		
+		if (obj == null){
 			return false;
-		if (getClass() != obj.getClass())
+		}			
+			
+		if (getClass() != obj.getClass()){
 			return false;
+		}
+			
 		ExplorationPoint other = (ExplorationPoint) obj;
-		if (coordinateX != other.coordinateX)
-			return false;
-		if (coordinateY != other.coordinateY)
-			return false;
-		return true;
+		
+		return coordinateX == other.getCoordinateX() && coordinateY == other.getCoordinateY(); 
 	}	
 }
