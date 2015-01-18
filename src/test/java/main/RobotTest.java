@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.yasser.rachid.marsrovers.model.ExplorationPoint;
+import br.com.yasser.rachid.marsrovers.model.Orientation;
 import br.com.yasser.rachid.marsrovers.model.Robot;
 
 public class RobotTest {
@@ -15,11 +16,7 @@ public class RobotTest {
 	
 	@Before
 	public void setUp(){		
-		robot = new Robot();
-		
-		robot.setPoint(new ExplorationPoint(1,2));
-		robot.setOrientation(Orientation.NORTH);
-		
+		robot = new Robot(new ExplorationPoint(1,2), Orientation.NORTH);		
 	}
 	
 	@Test
