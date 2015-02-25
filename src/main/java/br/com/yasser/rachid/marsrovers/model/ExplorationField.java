@@ -6,6 +6,9 @@ public class ExplorationField {
 	public static final int DEFAULT_WIDTH = 7;
 	public static final int DEFAULT_HEIGHT = 7;	
 	
+	public static final int WIDTH_INDEX  = 0;
+	public static final int HEIGHT_INDEX = 1;
+	
 	private int width;
 	private int height;
 	private int [][] field;
