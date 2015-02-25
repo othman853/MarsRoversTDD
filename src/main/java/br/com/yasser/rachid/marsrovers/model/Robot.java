@@ -71,4 +71,34 @@ public class Robot {
 
 		return robot;
 	}
+	
+	public void execute(Command command){
+		parse(this, command);
+	}
+
+	public ExplorationPoint trace(Command command) {
+		Robot tracer = new Robot(this.point, this.orientation);
+		
+		parse(tracer, command);
+		
+		return tracer.getPoint();
+	}
+	
+	private void parse(Robot robot, Command command){
+		for(char move : command.get().toCharArray()){
+			switch(move){
+			case 'M':
+				robot.move();
+				break;
+			case 'L':
+				robot.toLeft();
+				break;
+			case 'R':
+				robot.toRight();
+				break;
+			default:
+					break;
+			}
+		}
+	}
 }
