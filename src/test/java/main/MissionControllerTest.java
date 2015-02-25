@@ -1,15 +1,18 @@
 package main;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
+import br.com.yasser.rachid.marsrovers.controller.MissionController;
 import br.com.yasser.rachid.marsrovers.model.ExplorationField;
 import br.com.yasser.rachid.marsrovers.model.ExplorationPoint;
+import br.com.yasser.rachid.marsrovers.model.Orientation;
+import br.com.yasser.rachid.marsrovers.model.Robot;
 
 public class MissionControllerTest {
 
@@ -23,18 +26,18 @@ public class MissionControllerTest {
 	}
 	
 	@Test
-	public void addRobot_12NAsInitialRobotPosition_ShouldAddTheRobotToTheList(){
-		Robot robot = robotBuilder.getSingle();
-		ExplorationPoint initalRobotPoint = pointBuilder.getSingle();
+	public void addRobot_12NAsInitialRobotPosition_ShouldAddTheRobotToTheList(){		
+		ExplorationPoint initialRobotPoint = new ExplorationPoint();
 		initialRobotPoint.setCoordinateX(1);
 		initialRobotPoint.setCoordinateY(2);
-		robot.setExplorationPoint(initalRobotPoint);
-		robot.setOrientation(Orientation.NORTH);
+		
+		Robot robot = new Robot(initialRobotPoint, Orientation.NORTH);		
 		
 		controller.addRobot(robot);		
-		int pointStatus = controller.getField().getPointStatus(point);
+		int pointStatus = controller.getField().getPointStatus(initialRobotPoint);
 		
-		assertThat(pointStatus, is(ExplorationPoint.POINT_FILLED));		
+		assertThat(pointStatus, is(ExplorationPoint.POINT_FILLED));	
+		assertThat(controller.getRobots().size(), is(1));
 	}
 	
 	@Test
