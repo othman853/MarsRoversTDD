@@ -43,7 +43,7 @@ public class RobotTest {
 	public void move_12NAsRobotPosition_ShouldChangePositionTo13N(){
 		String expectedPosition = "1 3 N";
 		
-		robot.toLeft();
+		robot.move();
 		String robotPosition = robot.toString();		
 		
 		assertThat(robotPosition, is(expectedPosition));		

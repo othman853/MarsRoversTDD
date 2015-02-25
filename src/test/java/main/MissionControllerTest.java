@@ -17,10 +17,11 @@ import br.com.yasser.rachid.marsrovers.model.Robot;
 public class MissionControllerTest {
 
 	private MissionController controller;
+
 	@Mock private ExplorationField field;
 		
 	@Before
-	public void setUp(){
+	public void setUp(){		
 		field = mock(ExplorationField.class);
 		controller = new MissionController(field);
 	}
@@ -41,12 +42,7 @@ public class MissionControllerTest {
 	}
 	
 	@Test
-	public void moveRobot_12NRobot_COMMANDAsParam_ShouldMoveTheRobotToTheXXXPosition(){
-		
-	}
-	
-	@Test
-	public void moveRobot_12NRobot_COMMANDAsParam_ShouldNotMoveTheRobot_BecauseTheDestinationIsAlreadyFilled(){
+	public void addRobot_FilledPointOnFieldDestinationAsParam_Should(){
 		
 	}
 }
