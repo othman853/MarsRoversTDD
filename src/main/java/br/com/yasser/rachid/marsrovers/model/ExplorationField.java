@@ -1,5 +1,8 @@
 package br.com.yasser.rachid.marsrovers.model;
 
+import br.com.yasser.rachid.marsrovers.model.exception.PointFilledException;
+import br.com.yasser.rachid.marsrovers.model.exception.RobotCollisionException;
+
 
 public class ExplorationField {
 	
@@ -43,13 +46,34 @@ public class ExplorationField {
 		return this.height;
 	}
 	
-	public void addRobot(Robot robot) throws IllegalArgumentException{
-		if(isInsideFieldBounds(robot.getPoint())){
-			field[robot.getPoint().getCoordinateX()][robot.getPoint().getCoordinateY()] = ExplorationPoint.POINT_FILLED;			
+	public void addRobot(Robot robot) throws IllegalArgumentException, PointFilledException{
+		if(!isInsideFieldBounds(robot.getPoint())){
+			throw new IllegalArgumentException("Specified coordinate is out of the exploration field's bounds.");						
+		}		
+		else if(field[robot.getPoint().getCoordinateX()][robot.getPoint().getCoordinateY()] == ExplorationPoint.POINT_FILLED){
+			throw new PointFilledException("Point Already Filled");
 		}
 		else{
-			throw new IllegalArgumentException("Specified coordinate is out of the exploration field's bounds.");
+			field[robot.getPoint().getCoordinateX()][robot.getPoint().getCoordinateY()] = ExplorationPoint.POINT_FILLED;
 		}					
+	}
+	
+	public void executeCommand(Robot robot, Command command) throws RobotCollisionException, IllegalArgumentException{
+		ExplorationPoint route = robot.trace(command);
+		
+		if(field[route.getCoordinateX()][route.getCoordinateY()] == ExplorationPoint.POINT_FILLED){
+			throw new RobotCollisionException("The robot at " + robot.toString() + " will collide with another robot on command execution.");
+		}
+		
+		else if(!isInsideFieldBounds(route)){
+			throw new IllegalArgumentException("Command will lead the robot out of the exploration field.");
+		}
+		
+		else{
+			clear(robot.getPoint());
+			robot.execute(command);
+			fill(robot.getPoint());
+		}
 	}
 	
 	public boolean isInsideFieldBounds(ExplorationPoint point){
@@ -58,6 +82,14 @@ public class ExplorationField {
 	
 	public int getPointStatus(ExplorationPoint point){
 		return field[point.getCoordinateX()][point.getCoordinateY()];
+	}
+	
+	private void clear(ExplorationPoint point){
+		field[point.getCoordinateX()][point.getCoordinateY()] = ExplorationPoint.POINT_FREE;
+	}
+	
+	private void fill(ExplorationPoint point){
+		field[point.getCoordinateX()][point.getCoordinateY()] = ExplorationPoint.POINT_FILLED;
 	}
 	
 	public void print(){

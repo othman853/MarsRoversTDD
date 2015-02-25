@@ -38,8 +38,7 @@ public class Main {
 		}				
 	}
 	
-	public void run() {
-		String input;
+	public void run() {		
 		boolean mayContinue = true;		
 		do{
 			try{
