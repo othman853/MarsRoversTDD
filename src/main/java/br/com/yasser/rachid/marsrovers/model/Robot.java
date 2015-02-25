@@ -12,6 +12,10 @@ public class Robot {
 		this.point = point;
 		this.orientation = orientation;
 	}
+	
+	public ExplorationPoint getPoint(){
+		return this.point;
+	}
 
 	public void toLeft() {
 		changeOrientation(DIRECTION_LEFT);
