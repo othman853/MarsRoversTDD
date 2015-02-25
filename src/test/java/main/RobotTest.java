@@ -2,10 +2,12 @@ package main;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.yasser.rachid.marsrovers.model.Command;
 import br.com.yasser.rachid.marsrovers.model.ExplorationPoint;
 import br.com.yasser.rachid.marsrovers.model.Orientation;
 import br.com.yasser.rachid.marsrovers.model.Robot;
@@ -45,6 +47,27 @@ public class RobotTest {
 		
 		robot.move();
 		String robotPosition = robot.toString();		
+		
+		assertThat(robotPosition, is(expectedPosition));		
+	}
+	
+	@Test
+	public void trace_12NAsRobotPositionMAsCommandParam_ShouldReturn13ExplorationPoint(){
+		ExplorationPoint expectedPoint = new ExplorationPoint(1,3);
+		Command command = new Command("M");
+		
+		ExplorationPoint tracedPoint = robot.trace(command);
+				
+		assertEquals(expectedPoint, tracedPoint);
+	}
+	
+	@Test
+	public void execute_12NAsRobotPositionAndMAsCommandParam_ShouldChangePositionTo13n(){
+		String expectedPosition = "1 3 N";
+		Command command = new Command("M");
+		
+		robot.execute(command);
+		String robotPosition = robot.toString();
 		
 		assertThat(robotPosition, is(expectedPosition));		
 	}
