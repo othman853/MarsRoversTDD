@@ -2,6 +2,7 @@ package main;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
 import java.util.InputMismatchException;
@@ -54,7 +55,24 @@ public class DialogsTest {
 		dialogs.askForCommand();
 	}
 	
+	@Test
+	public void mayContinue_yAsParam_ShouldReturnTrue(){
+		String expectedInput = "y";
+		dialogs = new Dialogs(createScanner(expectedInput));
+		
+		boolean mayContinue = dialogs.mayContinue();
+		
+		assertTrue(mayContinue);
+	}
 	
+	@Test(expected=InputMismatchException.class)
+	public void mayContinue_InvalidInputAsParam_ShouldThrowInputMismatchException(){
+		String incorrectInput = "a";
+		dialogs = new Dialogs(createScanner(incorrectInput));
+		
+		dialogs.mayContinue();
+	}
+		
 	
 	private Scanner createScanner(String input){
 		return new Scanner(new ByteArrayInputStream(input.getBytes()));
