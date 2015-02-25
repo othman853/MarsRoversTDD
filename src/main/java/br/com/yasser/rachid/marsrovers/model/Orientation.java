@@ -16,4 +16,8 @@ public enum Orientation {
 	public String getOrientation(){
 		return this.orientation;
 	}
+	
+	public String toString(){
+		return this.orientation;
+	}
 }
