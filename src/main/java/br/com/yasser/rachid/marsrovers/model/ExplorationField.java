@@ -43,9 +43,9 @@ public class ExplorationField {
 		return this.height;
 	}
 	
-	public void addRobot(Robot robot, ExplorationPoint point) throws IllegalArgumentException{
-		if(isInsideFieldBounds(point)){
-			field[point.getCoordinateX()][point.getCoordinateY()] = ExplorationPoint.POINT_FILLED;			
+	public void addRobot(Robot robot) throws IllegalArgumentException{
+		if(isInsideFieldBounds(robot.getPoint())){
+			field[robot.getPoint().getCoordinateX()][robot.getPoint().getCoordinateY()] = ExplorationPoint.POINT_FILLED;			
 		}
 		else{
 			throw new IllegalArgumentException("Specified coordinate is out of the exploration field's bounds.");
