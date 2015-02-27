@@ -68,21 +68,21 @@ public class ExplorationFieldTest {
 	}
 	
 	@Test
-	public void executeCommand_RobotAt12NAndMMCommandAsParam_ShouldMoveTheRobotTo14N() throws IllegalArgumentException, PointFilledException, RobotCollisionException{
-		ExplorationPoint initialPoint = new ExplorationPoint(1,2);
+	public void moveRobot_RobotAt12NAndMMCommandAsParam_ShouldMoveTheRobotTo14N() throws IllegalArgumentException, PointFilledException, RobotCollisionException{
+		ExplorationPoint initialPoint = new ExplorationPoint(1,2);		
 		ExplorationPoint desiredDestination = new ExplorationPoint(1,4);
-		Robot robot = new Robot(initialPoint, Orientation.NORTH);
+		Robot robot = new Robot(new ExplorationPoint(1,2), Orientation.NORTH);
 		Command command = new Command("MM");
 		
 		explorationField.addRobot(robot);
-		explorationField.executeCommand(robot, command);
+		explorationField.moveRobot(robot, command);		
 		
 		assertThat(explorationField.getPointStatus(initialPoint), is(ExplorationPoint.POINT_FREE));
 		assertThat(explorationField.getPointStatus(desiredDestination), is(ExplorationPoint.POINT_FILLED));		
 	}
 	
 	@Test(expected=RobotCollisionException.class)
-	public void executeCommand_RobotAndCollidingCOmmandAsParam_ShouldThrowRobotCollisionException() throws IllegalArgumentException, PointFilledException, RobotCollisionException{
+	public void moveRobot_RobotAndCollidingCOmmandAsParam_ShouldThrowRobotCollisionException() throws IllegalArgumentException, PointFilledException, RobotCollisionException{
 		ExplorationPoint initialPoint = new ExplorationPoint(1,2);
 		ExplorationPoint filledPoint = new ExplorationPoint(1,4);
 		Robot movingRobot = new Robot(initialPoint, Orientation.NORTH);
@@ -91,6 +91,6 @@ public class ExplorationFieldTest {
 		
 		explorationField.addRobot(movingRobot);
 		explorationField.addRobot(placeholderRobot);
-		explorationField.executeCommand(movingRobot, move);		
+		explorationField.moveRobot(movingRobot, move);		
 	}
 }
